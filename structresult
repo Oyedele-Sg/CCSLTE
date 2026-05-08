@@ -1,0 +1,87 @@
+type V3PerformanceResponse struct {
+    Aggregation      interface{}       `json:"aggregation"`
+    EndTime          int64             `json:"endTime"`
+    GroupAggregation interface{}       `json:"groupAggregation"`
+    IndicatorResults []IndicatorResult `json:"indicatorResults"`
+    StartTime        int64             `json:"startTime"`
+    PartialResults   interface{}       `json:"partialResults"`
+}
+
+type IndicatorResult struct {
+    BaselineData interface{} `json:"baselineData"`
+
+    DeviceAltName     string `json:"deviceAltName"`
+    DeviceDisplayName string `json:"deviceDisplayName"`
+    DeviceGroups      []any  `json:"deviceGroups"`
+    DeviceID          string `json:"deviceId"`
+    DeviceName        string `json:"deviceName"`
+
+    IndicatorID              string `json:"indicatorId"`
+    IndicatorType            string `json:"indicatorType"`
+    IndicatorTypeID          string `json:"indicatorTypeId"`
+    IndicatorTypeDescription string `json:"indicatorTypeDescription"`
+
+    KronPollFrequency int   `json:"kronPollFrequency"`
+    Metadata          []any `json:"metadata"`
+    PeerID            string `json:"peerId"`
+
+    PluginID          string `json:"pluginId"`
+    PluginName        string `json:"pluginName"`
+    PluginObjectString string `json:"pluginObjectString"`
+
+    PolledData PolledData `json:"polledData"`
+
+    ObjectAltName      string `json:"objectAltName"`
+    ObjectDisplayName  string `json:"objectDisplayName"`
+    ObjectID           string `json:"objectId"`
+    ObjectDataTable    string `json:"objectDataTable"`
+    ObjectDescription  string `json:"objectDescription"`
+    ObjectGroups       []any  `json:"objectGroups"`
+    ObjectName         string `json:"objectName"`
+    ObjectTypeID       string `json:"objectTypeId"`
+    ObjectTypePath     string `json:"objectTypePath"`
+
+    PercentData     interface{} `json:"percentData"`
+    SigmaData       interface{} `json:"sigmaData"`
+    TimeOverTimeData interface{} `json:"timeOverTimeData"`
+}
+
+type PolledData struct {
+    AvgY float64 `json:"avgY"`
+
+    DataPoints []DataPoint `json:"dataPoints"`
+
+    MaxX float64 `json:"maxX"`
+    MaxY float64 `json:"maxY"`
+    MaxYCap float64 `json:"maxYCap"`
+
+    MinX float64 `json:"minX"`
+    MinY float64 `json:"minY"`
+
+    Percentiles []any `json:"percentiles"`
+
+    PostTime        int64   `json:"postTime"`
+    PostValue       float64 `json:"postValue"`
+    PostValueFocus  int     `json:"postValueFocus"`
+    PostValueVisible bool   `json:"postValueVisible"`
+
+    PreTime         int64   `json:"preTime"`
+    PreValue        float64 `json:"preValue"`
+    PreValueFocus   int     `json:"preValueFocus"`
+    PreValueVisible bool    `json:"preValueVisible"`
+
+    Total float64 `json:"total"`
+
+    TrendValueA string `json:"trendValueA"` // IMPORTANT: string (NaN)
+    TrendValueB string `json:"trendValueB"`
+
+    TzOffset int    `json:"tzOffset"`
+    Units    string `json:"units"`
+}
+
+type DataPoint struct {
+    Focus   int     `json:"focus"`
+    Time    float64 `json:"time"`   // IMPORTANT: float
+    Value   float64 `json:"value"`
+    Visible bool    `json:"visible"`
+}
